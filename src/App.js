@@ -253,8 +253,7 @@ const App = () => {
                   // Display the task with the checkbox:
                   <div className=" flex pr-10 py-3 pl-3 mr-6 font-semibold self-center grow border-2 border-black">
                     <button
-                      className={` bg-white mx-1 border-black border-2 hover:bg-gray-400 
-                                    ${task.completed ? ("bg-gray-400") : ''}`}
+                      className={` mx-1 border-black border-2 ${task.completed ? "bg-gray-400" : "bg-white"} hover:bg-gray-400`}
                       style={{height: "20px", width: "20px", alignSelf: "center"}}
                       onClick={() => 
                         toggleTaskCompletion(index)
