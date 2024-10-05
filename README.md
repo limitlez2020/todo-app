@@ -1,70 +1,68 @@
-# Getting Started with Create React App
+# Todo List Web App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A dynamic and responsive Todo List application designed to enhance daily productivity and motivation. Built using React.js and styled with Tailwind CSS, this app offers seamless task management and daily inspirational quotes to keep users motivated.
 
-## Available Scripts
+## Project Overview
 
-In the project directory, you can run:
+This project is a web application that allows users to manage their tasks effectively. The app is equipped with key features such as task management (adding, editing, saving, and deleting tasks) and the ability to display daily inspirational quotes fetched from a REST API. The primary focus of the project is to provide a user-friendly interface that is both intuitive and engaging, ensuring a personalized user experience.
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Task Management**: 
+  - Add new tasks
+  - Edit existing tasks
+  - Save tasks
+  - Delete tasks
+- **Daily Inspirational Quotes**:
+  - Fetches and displays a new inspirational quote every day from a REST API.
+- **Responsive Design**:
+  - Fully responsive design ensuring a seamless experience across various devices.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Technologies Used
 
-### `npm test`
+- **React.js**: For building the interactive user interface.
+- **Tailwind CSS**: For designing a modern and responsive UI.
+- **REST API**: Integrated for fetching daily inspirational quotes.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Installation and Setup
 
-### `npm run build`
+To run this project locally, follow these steps:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/limitlez2020/todo-app.git
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2. **Navigate to the project directory:**
+   ```bash
+   cd todo-app
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+3. **Install dependencies:**
+   ```bash
+   npm install
 
-### `npm run eject`
+4. **Run the application:**
+   ```bash
+   npm start
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+The application will be available at http://localhost:3000
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Usage:
+Link: https://limitlez2020.github.io/todo-app/
 
-## Learn More
+Once the application is running, you can:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+1. **Add Tasks:** Use the input field to add new tasks to your list.
+2. **Edit Tasks:** Click on a task to edit its content.
+3. **Save Tasks:** Ensure all your changes are saved.
+4. **Delete Tasks:** Remove tasks that you have completed or no longer need.
+5. **View Inspirational Quotes:** A daily quote will be displayed to motivate you.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Authors:
 
-### Analyzing the Bundle Size
+- David Fortune Akinremi (Me 🙈)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+"# todo-app" 
