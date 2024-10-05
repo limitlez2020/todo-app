@@ -129,24 +129,24 @@ const App = () => {
 
 
 
-  // Function to fetch the quotes from the API
-  // using UseEffect
+  /* Fetch the quotes from the API */
   useEffect(() => {
-    fetch("https://api.quotable.io/random")
+    fetch("https://api.adviceslip.com/advice")
       .then((response) => response.json())
       /* Data is what you extract from the "response" object
        * using one of its methods like ".json()" above */
       .then((data) => {
-        // Set the quote state to the quote fetched
-        setQuote(data.content);
+        /* Set the quote state to the quote fetched */
+        setQuote(data.slip.advice);
       })
 
-      // To handle errors:
+      /* To handle errors: */
       .catch((error) => {
         console.error("There has been an error fetching quote: ", error);
       });
 
   }, []);
+  
 
 
 
@@ -266,12 +266,6 @@ const App = () => {
                       {task.text}
                     </li>
                   </div>
-
-
-                  // Display task:
-                  // <li className=" pr-10 py-3 pl-3 mr-6 border-2 border-black font-semibold self-center grow ">
-                  //   {task.text}
-                  // </li>
                 )}
 
 
