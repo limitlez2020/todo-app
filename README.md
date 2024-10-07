@@ -64,5 +64,3 @@ Once the application is running, you can:
 ## Authors:
 
 - David Fortune Akinremi (Me 🙈)
-
-"# todo-app" 
