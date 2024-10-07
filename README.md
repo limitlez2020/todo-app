@@ -49,14 +49,14 @@ The application will be available at http://localhost:3000
 
 
 ## Usage:
-Link: https://limitlez2020.github.io/todo-app/
+Live Link: https://todo-app-fortune.vercel.app/
 
 Once the application is running, you can:
 
 1. **Add Tasks:** Use the input field to add new tasks to your list.
 2. **Edit Tasks:** Click on a task to edit its content.
 3. **Save Tasks:** Ensure all your changes are saved.
-4. **Delete Tasks:** Remove tasks that you have completed or no longer need.
+4. **Delete Tasks:** Remove tasks you have completed or no longer need.
 5. **View Inspirational Quotes:** A daily quote will be displayed to motivate you.
 
 
