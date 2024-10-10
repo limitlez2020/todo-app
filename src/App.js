@@ -216,7 +216,7 @@ const App = () => {
 
 
       {/* Header */}
-      <h1 className=" text-xl mt-16 mb-2 mr-96 font-bold">
+      <h1 className="w-full max-w-[470px] text-xl mt-16 mb-2 font-bold">
         Todo:
       </h1>
 
@@ -226,7 +226,7 @@ const App = () => {
 
       {/* List of tasks */}
       {/* style={{width: '480px'}} */}
-      <div className="w-full max-w-[480px]">
+      <div className="w-full max-w-[470px] border-black border-2">
         {/* if the tasks array is not empty, display the top paert
         else, display the bottom part */}
         {tasks.length > 0 ? (
@@ -252,7 +252,7 @@ const App = () => {
                   />
                 ) : (
                   // Display the task with the checkbox:
-                  <div className=" flex pr-10 py-3 pl-3 mr-6 font-semibold self-center grow border-2 border-black">
+                  <div className=" flex pr-10 py-3 pl-3 mr-6 font-semibold self-center grow border-b border-black/25">
                     <button
                       className={` mx-1 border-black border-2 ${task.completed ? "bg-black/25" : "bg-white"} hover:bg-black/25`}
                       style={{height: "20px", width: "20px", alignSelf: "center"}}
@@ -327,9 +327,7 @@ const App = () => {
 
 
       {/* To Display the Quotes at the bottom: */}
-      <div className=" mt-20 mb-16"
-           style={{width: '440px'}}
-      >
+      <div className="w-full max-w-[470px] mt-20 mb-16">
         <h1 className=" text-sm font-semibold">
           Quote of the Day:
         </h1>
