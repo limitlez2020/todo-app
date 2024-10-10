@@ -327,7 +327,7 @@ const App = () => {
 
 
       {/* To Display the Quotes at the bottom: */}
-      <div className="w-full sm:max-w-[470px] mt-20 mb-16">
+      <div className="w-96 mt-20 mb-16">
         <h1 className="text-left text-sm font-semibold">
           Quote of the Day:
         </h1>
