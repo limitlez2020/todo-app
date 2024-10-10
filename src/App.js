@@ -279,7 +279,7 @@ const App = () => {
                 {editTaskId === index ? (
                   <button
                     className="flex items-center justify-center bg-black
-                               p-2 mx-1 text-white font-bold border-white border-2
+                               p-2 mx-1 text-white font-bold border-black border-2
                                w-10 h-10 hover:bg-black/75 hover:border-black hover:border-2}"
                     onClick={updateTasks}
                   >
@@ -289,9 +289,8 @@ const App = () => {
                 ) : (
                   <button
                     className="flex items-center justify-center bg-black p-2 mx-1
-                               w-10 h-10 text-white font-bold border-white border-2
+                               w-10 h-10 text-white font-bold border-black border-2
                                self-center hover:bg-black/75 hover:border-black hover:border-2}"
-                    // style={{ height: "50px"}}
                     onClick={() => editTasks(index)}
                   >
                     {/* Use edit icon */}
