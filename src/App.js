@@ -171,20 +171,20 @@ const App = () => {
 
 
   return (
-    // The wrapper around the whole todo app
+    /* The wrapper around the whole todo app */
     <div className="flex flex-col items-center">
 
       {/* Date Header: */}
-      <h1 className=" text-3xl mb-8 mt-24 font-semibold text-center montserrat-font">
+      <h1 className="relative text-2xl mt-24 md:text-3xl lg:text-4xl mb-8 font-bold text-center montserrat-font">
         {getDate()}
       </h1>
       
 
       {/* Input and Button */}
-      <div className=" border-2 border-black justify-center" style={{width: '448px'}}>
+      <div className="flex relative border-2 border-black justify-center">
         <input type="text"
                placeholder="Add new task"
-               className=" pl-4 py-2 focus:outline-none w-96"
+               className="relative pl-4 py-2 focus:outline-none w-96"
                value={task}
               // Define the onchange event for our input field
               // This will update the task state with the value of the input field
@@ -203,8 +203,8 @@ const App = () => {
         
         <button 
               className=" bg-white text-black border-black border-2 px-2 ml-4
-                          rounded-md font-bold text-center
-                          hover:bg-black hover:text-cyan-50"
+                          absolute font-bold text-center bottom-1/2
+                          translate-y-1/2 right-0 mr-2 hover:bg-black hover:text-cyan-50"
               
               // When the button is clicked, add the task
               onClick = {addTasks}
@@ -225,20 +225,21 @@ const App = () => {
 
 
       {/* List of tasks */}
-      <div style={{width: '480px'}}>
+      {/* style={{width: '480px'}} */}
+      <div className="min-w-[480px]">
         {/* if the tasks array is not empty, display the top paert
         else, display the bottom part */}
         {tasks.length > 0 ? (
           <ul>
             {tasks.map((task, index) => (
               // Display the task in a list item
-              <div className=" flex m-4" key={index}>
+              <div className="flex m-4" key={index}>
               
                 {/* If the task is being edited, display the input field
                 else display the task */}
                 {editTaskId === index ? (
                   <input type="text"
-                         className=" pl-4 py-2 focus:outline-none w-96 border-b-2 border-black mr-6"
+                         className="pl-4 py-2 focus:outline-none w-full border-b-2 border-black mr-6"
                          value={editTask}
                          onChange = {(e) => {
                                       setEditTask(e.target.value);
@@ -277,8 +278,9 @@ const App = () => {
                     display the Save Button, else display the Edit Button */}
                 {editTaskId === index ? (
                   <button
-                    className="bg-slate-900 p-2 mx-1 text-white font-bold border-white border-2
-                               hover:bg-slate-600 hover:border-black hover:border-2}"
+                    className="flex items-center justify-center bg-black
+                               p-2 mx-1 text-white font-bold border-white border-2
+                               w-10 h-10 hover:bg-black/75 hover:border-black hover:border-2}"
                     onClick={updateTasks}
                   >
                     {/* Use save icon */}
@@ -286,9 +288,10 @@ const App = () => {
                   </button>
                 ) : (
                   <button
-                    className="bg-slate-900 p-2 mx-1 text-white font-bold border-white border-2
-                               self-center hover:bg-slate-600 hover:border-black hover:border-2}"
-                    style={{ height: "50px"}}
+                    className="flex items-center justify-center bg-black p-2 mx-1
+                               w-10 h-10 text-white font-bold border-white border-2
+                               self-center hover:bg-black/75 hover:border-black hover:border-2}"
+                    // style={{ height: "50px"}}
                     onClick={() => editTasks(index)}
                   >
                     {/* Use edit icon */}
@@ -300,14 +303,13 @@ const App = () => {
 
                {/* Delete Button: */}
                 <button 
-                  className=" bg-red-900 p-2 mx-1 text-white font-bold border-white border-2
-                  self-center hover:bg-red-700 hover:border-black hover:border-2}"
-                  style={{ height: "50px"}}
+                  className="flex items-center justify-center bg-[#d3aefe] p-2 mx-1
+                           text-black font-bold border-black border-2 self-center
+                           w-10 h-10 hover:bg-[#9f6cd9] hover:border-black hover:border-2"
+                  // style={{ height: "50px"}}
 
-                  // We could have just called onClick= {deleteTasks(index)}
-                  // But this would have called deleteTasks automatically
-                  // So anytime you added a task, it is deleted automatically
-                  // So we have to wrap it in an anonymous function
+                  /* Wrap delete task in an anonymous function to prevent
+                   * task from automatically deleting */
                   onClick= {() => deleteTasks(index)}
                 >
                   {/* Use Trashcan Icon: */}
