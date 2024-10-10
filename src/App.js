@@ -226,7 +226,7 @@ const App = () => {
 
       {/* List of tasks */}
       {/* style={{width: '480px'}} */}
-      <div className="min-w-[480px]">
+      <div className="w-full max-w-[480px]">
         {/* if the tasks array is not empty, display the top paert
         else, display the bottom part */}
         {tasks.length > 0 ? (
