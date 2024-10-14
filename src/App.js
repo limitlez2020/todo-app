@@ -1,5 +1,5 @@
 import { useState } from "react"
-// For handling fetching a quote from the quote API
+/* For handling fetching a quote from the quote API */
 import { useEffect } from "react"    
 // import icons:
 import { BookmarkIcon, PencilSquareIcon, TrashIcon } from "@heroicons/react/24/solid";
@@ -49,6 +49,9 @@ const App = () => {
 
       // Test
       console.log(tasks);
+
+      // Save updated tasks to localStorage
+      localStorage.setItem("tasks", JSON.stringify([...tasks, newTask]));
     }
   }
 
@@ -76,6 +79,8 @@ const App = () => {
     // Update the tasks array
     setTasks(newTasks);
 
+    // Save updated tasks to localStorage
+    localStorage.setItem("tasks", JSON.stringify(newTasks));
   }
 
 
@@ -89,6 +94,9 @@ const App = () => {
     setEditTask(tasks[index].text);
     // Set the index of the task to be edited
     setEditTaskId(index);
+
+    /* Save updated tasks to localStorage */ 
+    localStorage.setItem("tasks", JSON.stringify(tasks));
   }
 
 
@@ -106,6 +114,9 @@ const App = () => {
     // Reset the editTaskId
     setEditTaskId(-1);
     setTask("");
+
+    // Save updated tasks to localStorage
+    localStorage.setItem("tasks", JSON.stringify(newTasks));
   }
 
 
@@ -121,10 +132,21 @@ const App = () => {
     // displayed as "Monday" and not "Mon" which is short
     const options = { weekday: 'long', month: 'long', day: 'numeric' };
     return date.toLocaleDateString("en-US", options);
-
   }
   
 
+
+  
+  // Toggle between task completed and not:
+  // This function will be called when the checkbox is clicked
+  const toggleTaskCompletion = (index) => {
+    // Create a copy of the task array:
+    const newTasks = tasks.slice();
+    // Toggle the completed boolean of the selected task
+    newTasks[index].completed = !newTasks[index].completed;
+    // Update the tasks array:
+    setTasks(newTasks);
+  }
 
 
 
@@ -150,19 +172,14 @@ const App = () => {
 
 
 
+  /* Load tasks from localStorage when the component mounts: */
+  useEffect(() => {
+    const tasks = localStorage.getItem("tasks");
+    if (tasks) {
+      setTasks(JSON.parse(tasks));
+    }
+  }, []);
 
-
-
-  // Toggle between task completed and not:
-  // This function will be called when the checkbox is clicked
-  const toggleTaskCompletion = (index) => {
-    // Create a copy of the task array:
-    const newTasks = tasks.slice();
-    // Toggle the completed boolean of the selected task
-    newTasks[index].completed = !newTasks[index].completed;
-    // Update the tasks array:
-    setTasks(newTasks);
-  }
 
 
 
