@@ -146,7 +146,7 @@ const App = () => {
     newTasks[index].completed = !newTasks[index].completed;
     // Update the tasks array:
     setTasks(newTasks);
-    
+
     // Save updated tasks to localStorage
     localStorage.setItem("tasks", JSON.stringify(newTasks));
   }
@@ -218,7 +218,6 @@ const App = () => {
                                 addTasks();
                               }
                             }}
-
         />
         
         <button 
@@ -245,7 +244,6 @@ const App = () => {
 
 
       {/* List of tasks */}
-      {/* style={{width: '480px'}} */}
       <div className="w-full max-w-96 sm:max-w-[470px] border-black border-2">
         {/* if the tasks array is not empty, display the top paert
         else, display the bottom part */}
