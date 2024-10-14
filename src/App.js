@@ -146,6 +146,9 @@ const App = () => {
     newTasks[index].completed = !newTasks[index].completed;
     // Update the tasks array:
     setTasks(newTasks);
+    
+    // Save updated tasks to localStorage
+    localStorage.setItem("tasks", JSON.stringify(newTasks));
   }
 
 
