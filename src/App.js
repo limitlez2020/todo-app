@@ -201,7 +201,7 @@ const App = () => {
       
 
       {/* Input and Button */}
-      <div className="flex relative border-2 border-black justify-center">
+      <div className="flex relative border border-black justify-center">
         <input type="text"
                placeholder="Add new task"
                className="relative pl-4 py-2 focus:outline-none w-96"
