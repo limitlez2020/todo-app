@@ -204,7 +204,7 @@ const App = () => {
       <div className="flex relative border-2 border-black justify-center">
         <input type="text"
                placeholder="Add new task"
-               className="relative pl-4 py-2 focus:outline-none w-96"
+               className="relative pl-4 py-2 focus:outline-none w-72 lg:w-96 md:w-96"
                value={task}
               // Define the onchange event for our input field
               // This will update the task state with the value of the input field
