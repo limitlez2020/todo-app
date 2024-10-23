@@ -1,33 +1,30 @@
 import { useState } from "react"
 /* For handling fetching a quote from the quote API */
 import { useEffect } from "react"    
-// import icons:
+/* Import icons: */
 import { BookmarkIcon, PencilSquareIcon, TrashIcon } from "@heroicons/react/24/solid";
 
 
 const App = () => {
 
-  // State for handling the tasks
-  // Since I want to add checkboxes to each task,
-  // this "tasks" state value will not just be an array storing
-  // each task, now it will store an object 
-  // (containing the text of the task and a boolean 
-  // to see if the task is completed or not)
-  // The "task" state value remains the same:
-  //  - It will continue to store the text of the task inputted by the user
+  /* State for handling the tasks */
+  /* Since I want to add checkboxes to each task,
+   * this "tasks" state value will store an object 
+   * (containing the text of the task and a boolean 
+   * to see if the task is completed or not)
+   * The "task" state will be the task (text) inputed by user
+   */
   const [tasks, setTasks] = useState([]); 
   const [task, setTask] = useState("");
 
   /* State for handling the editing of tasks */
-  // Index of the task being edited
-  //    -1 means no task is being editted
+  /* TaskId is the Index of the task being edited
+   * -1 means no task is being editted */
   const [editTaskId, setEditTaskId] = useState(-1);
-  // Task currently being editted
+  /* Task currently being editted */
   const [editTask, setEditTask] = useState("");
 
-  // State for handling the inspirational quotes
-  // at the bottom of the page:
-  // This is the state to store the quote when fetched
+  /* State to store the inspirational quotes */
   const [quote, setQuote] = useState("");
 
 
@@ -35,51 +32,48 @@ const App = () => {
 
 
   /*********    FUNTIONS:   ***********/
-  // Function to add tasks to the task array
+  /* Function to add tasks to the task array */
   const addTasks = () => {
-    // If the task is not empty
+    /* If the task is not empty */
     if(task !== "") {
-      // Before adding the task to the tasks array, 
-      // we want to make it an object with text and bool
+      /* Before adding the task to the tasks array, 
+       * we want to make it an object with text and bool */
       const newTask = { text: task, completed: false};
-      // Add the task object to the tasks array
+      /* Add the task object to the tasks array */
       setTasks([...tasks, newTask]);
-      // Reset the task state
+      /* Reset the task state */
       setTask("");
 
-      // Test
-      console.log(tasks);
-
-      // Save updated tasks to localStorage
+      /* Save updated tasks to localStorage */
       localStorage.setItem("tasks", JSON.stringify([...tasks, newTask]));
     }
   }
 
 
 
-  // Function to delete task:
+  /* Function to delete task: */
   const deleteTasks = (index) => {
 
-    // Create a copy of the tasks array
-    // This is done to avoid directly modifying the state
-    // This is a good practice in React
-    // Another way to do it:
-    //      const newTasks = [...tasks];
-    // The spread operator ... returns a copy of the array too
+    /* Create a copy of the tasks array
+     * This is done to avoid directly modifying the state
+     * This is a good practice in React
+     * Another way to do it:
+     *      const newTasks = [...tasks];
+     * The spread operator ... returns a copy of the array too */
     const newTasks = tasks.slice();
 
-    // Remove the task at the index
-    // Use splice instead of delete, coz splice takes out the element
-    // The 1 in the 2nd parameter is how many elements you want to
-    // delete each time this func is called
-    // NOTE: if you dont define the second param, if you try to delete
-    //      the top task, it will delete all of them 
+    /* Remove the task at the index
+     * Use splice instead of delete, coz splice takes out the element
+     * The 1 in the 2nd parameter is how many elements you want to
+     * delete each time this func is called
+     * NOTE: if you dont define the second param, if you try to delete
+     *      the top task, it will delete all of them */
     newTasks.splice(index, 1);
 
-    // Update the tasks array
+    /* Update the tasks array */
     setTasks(newTasks);
 
-    // Save updated tasks to localStorage
+    /* Save updated tasks to localStorage */
     localStorage.setItem("tasks", JSON.stringify(newTasks));
   }
 
@@ -87,12 +81,12 @@ const App = () => {
 
 
 
-  // Function to edit task:
+  /* Function to edit task: */
   const editTasks = (index) => {
-    // Set the task to be edited
-    // Specifically get the text portion of the task object
+    /* Set the task to be edited
+     * Specifically get the text portion of the task object */
     setEditTask(tasks[index].text);
-    // Set the index of the task to be edited
+    /* Set the index of the task to be edited */
     setEditTaskId(index);
 
     /* Save updated tasks to localStorage */ 
@@ -103,19 +97,19 @@ const App = () => {
 
 
 
-  // Function to update task:
+  /* Function to update task: */
   const updateTasks = () => {
-    // Create a copy of the tasks array
+    /* Create a copy of the tasks array */
     const newTasks = tasks.slice();
-    // Update the task at the index
+    /* Update the task at the index */
     newTasks[editTaskId].text = editTask;
-    // Update the tasks array
+    /* Update the tasks array */
     setTasks(newTasks);
-    // Reset the editTaskId
+    /* Reset the editTaskId */
     setEditTaskId(-1);
     setTask("");
 
-    // Save updated tasks to localStorage
+    /* Save updated tasks to localStorage */
     localStorage.setItem("tasks", JSON.stringify(newTasks));
   }
 
@@ -123,31 +117,33 @@ const App = () => {
 
 
 
-  // Function to get current date to display:
+  /* Function to get current date to display: */
   const getDate = () => {
     const date = new Date();
 
-    // Format how you want the date to be displayed:
-    // The long means in their long form, so Monday will be
-    // displayed as "Monday" and not "Mon" which is short
+    /* Format how you want the date to be displayed:
+     * The long means in their long form, so Monday will be
+     * displayed as "Monday" and not "Mon" which is short */
     const options = { weekday: 'long', month: 'long', day: 'numeric' };
+
+    /* Return the date specific to the user's local time & date */
     return date.toLocaleDateString("en-US", options);
   }
   
 
 
   
-  // Toggle between task completed and not:
-  // This function will be called when the checkbox is clicked
+  /* Toggle between task completed and not:
+   * This function will be called when the checkbox is clicked */
   const toggleTaskCompletion = (index) => {
-    // Create a copy of the task array:
+    /* Create a copy of the task array: */
     const newTasks = tasks.slice();
-    // Toggle the completed boolean of the selected task
+    /* Toggle the completed boolean of the selected task */
     newTasks[index].completed = !newTasks[index].completed;
-    // Update the tasks array:
+    /* Update the tasks array: */
     setTasks(newTasks);
 
-    // Save updated tasks to localStorage
+    /* Save updated tasks to localStorage */
     localStorage.setItem("tasks", JSON.stringify(newTasks));
   }
 
@@ -206,13 +202,13 @@ const App = () => {
                placeholder="Add new task"
                className="relative pl-4 py-2 focus:outline-none w-72 lg:w-96 md:w-96"
                value={task}
-              // Define the onchange event for our input field
-              // This will update the task state with the value of the input field
+              /* Define the onchange event for our input field
+               * This will update the task state with the value of the input field */
                onChange = {(e) => {
                             setTask(e.target.value);
                           }}
-              // Add event handler so that when the "Enter" key
-              // is pressed, we add task
+              /* Add event handler so that when the "Enter" key
+               * is pressed, we add task */
               onKeyDown = {(e) => {
                               if(e.key === "Enter") {
                                 addTasks();
@@ -225,7 +221,7 @@ const App = () => {
                           absolute font-bold text-center bottom-1/2
                           translate-y-1/2 right-0 mr-2 hover:bg-black hover:text-cyan-50"
               
-              // When the button is clicked, add the task
+              /* When the button is clicked, add the task */
               onClick = {addTasks}
         >
           +
@@ -250,7 +246,7 @@ const App = () => {
         {tasks.length > 0 ? (
           <ul>
             {tasks.map((task, index) => (
-              // Display the task in a list item
+              /* Display the task in a list item */
               <div className="flex m-4" key={index}>
               
                 {/* If the task is being edited, display the input field
@@ -269,7 +265,7 @@ const App = () => {
                                       }}
                   />
                 ) : (
-                  // Display the task with the checkbox:
+                  /* Display the task with the checkbox: */
                   <div className=" flex pr-10 py-3 pl-3 mr-6 font-semibold self-center grow border-b border-black/25">
                     <button
                       className={` mx-1 border-black border-2 ${task.completed ? "bg-black/25" : "bg-white"} hover:bg-black/25`}
@@ -323,7 +319,6 @@ const App = () => {
                   className="flex items-center justify-center bg-[#d3aefe] p-2 mx-1
                            text-black font-bold border-black border-2 self-center
                            w-10 h-10 hover:bg-[#9f6cd9] hover:border-black hover:border-2"
-                  // style={{ height: "50px"}}
 
                   /* Wrap delete task in an anonymous function to prevent
                    * task from automatically deleting */
@@ -336,7 +331,7 @@ const App = () => {
             ))}
           </ul>
         ) : (
-          // If tasks array is empty, display this
+          /* If tasks array is empty, display this */
           <p className=" p-3 m-3">
             No tasks found
           </p>
