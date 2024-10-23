@@ -156,13 +156,13 @@ const App = () => {
 
   /* Fetch the quotes from the API */
   useEffect(() => {
-    fetch("https://api.adviceslip.com/advice")
+    fetch("https://quotes-api-self.vercel.app/quote")
       .then((response) => response.json())
       /* Data is what you extract from the "response" object
        * using one of its methods like ".json()" above */
       .then((data) => {
         /* Set the quote state to the quote fetched */
-        setQuote(data.slip.advice);
+        setQuote(data.quote);
       })
 
       /* To handle errors: */
